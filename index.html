@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow-x: hidden;
+      color: #fff;
+      text-align: center;
+    }
+
+    .container {
+      padding: 100px 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      animation: fadeUp 2s ease forwards 1s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      color: #ff3366;
+      font-size: 20px;
+      animation: rise 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Section */
+    .message-box {
+      margin-top: 80px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeIn 2s ease 1.5s forwards;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hey Iqra ❤️</h1>
+    <p>
+      I made this for you… because you're not just someone special — you're my love, my life, the one I see as my future. This page holds a piece of my heart, and I hope it makes you feel even a little of what I feel for you.</p>
+
+    <div class="message-box">
+      <h2>✨ A Small Message ✨</h2>
+      <p>
+        I don’t always say everything perfectly… but with you, every moment feels soft, safe, and beautiful. You make my world calmer, brighter, and fuller. And maybe… just maybe… this is my way of saying that you’re the one I want to hold on to — today and forever.</p>
+      <p><strong>You're my peace. You're my forever. You're the one I want to call my wife someday. ❤️</strong></p>
+    </div>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+  <div class="secret-section" style="margin-top:100px; opacity:0; transform:scale(0.8); transition:all 1s ease;">
+    <h2 style="font-size:2.5rem; margin-bottom:20px;">💌 A Secret Message For You 💌</h2>
+    <button id="revealBtn" style="padding:12px 25px; font-size:1.1rem; border:none; border-radius:30px; background:#ff4d6d; color:white; cursor:pointer; box-shadow:0 5px 15px rgba(0,0,0,0.2);">Reveal Message</button>
+    <p id="secretMessage" style="margin-top:25px; font-size:1.4rem; display:none; max-width:700px; margin-left:auto; margin-right:auto;">I don’t know where life will take us… but I know one thing with all my heart — I want every tomorrow with you. You’re not just a part of my life… you are my life. ❤️</p>
+  </div>
+
+  <script>
+    const revealBtn = document.getElementById("revealBtn");
+    const secretBox = document.querySelector(".secret-section");
+    const secretMessage = document.getElementById("secretMessage");
+
+    window.addEventListener("scroll", () => {
+      const position = secretBox.getBoundingClientRect().top;
+      if(position < window.innerHeight - 100){
+        secretBox.style.opacity = 1;
+        secretBox.style.transform = "scale(1)";
+      }
+    });
+
+    revealBtn.addEventListener("click", () => {
+      revealBtn.style.display = "none";
+      secretMessage.style.display = "block";
+      secretMessage.style.animation = "fadeUp 1.5s ease forwards";
+    });
+  </script>
+  <!-- Night Sky Section -->
+  <div id="nightSky" style="position:relative; height:400px; margin-top:120px; background:#0a0a2a; overflow:hidden;">
+    <h2 style="color:white; padding-top:40px; font-size:2.2rem;">🌌 Under This Sky, You Matter To Me 🌌</h2>
+  </div>
+
+  <!-- Heart Lock Screen -->
+  <div id="lockScreen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter:blur(6px); display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:9999;">
+    <h2 style="color:white; margin-bottom:20px; font-size:2rem;">🔒 Tap the Heart to Unlock</h2>
+    <div id="unlockHeart" style="font-size:5rem; cursor:pointer; animation:pulse 1.5s infinite;">❤️</div>
+  </div>
+
+  <!-- Final Confession Popup -->
+  <div id="confessPopup" style="position:fixed; bottom:-300px; left:50%; transform:translateX(-50%); background:white; color:#ff4d6d; padding:25px; border-radius:20px; width:80%; max-width:400px; box-shadow:0 10px 30px rgba(0,0,0,0.3); text-align:center; font-size:1.3rem; transition:0.8s ease; z-index:9998;">
+    I don’t know what the future holds… but I know exactly who I want in it — *you*. Not just as my girlfriend… but as the woman I want to marry, love, protect and grow with. ❤️</div>
+
+  <script>
+    /* STAR GENERATOR */
+    const sky = document.getElementById("nightSky");
+    for(let i=0;i<70;i++){
+      const star = document.createElement("div");
+      star.style.position = "absolute";
+      star.style.width = "3px";
+      star.style.height = "3px";
+      star.style.background = "white";
+      star.style.borderRadius = "50%";
+      star.style.top = Math.random()*100 + "%";
+      star.style.left = Math.random()*100 + "%";
+      star.style.opacity = Math.random();
+      star.style.animation = `twinkle ${Math.random()*3+2}s infinite ease-in-out`;
+      sky.appendChild(star);
+    }
+
+    /* LOCK SCREEN */
+    const lockScreen = document.getElementById("lockScreen");
+    const unlockHeart = document.getElementById("unlockHeart");
+    unlockHeart.onclick = () => {
+      lockScreen.style.opacity = "0";
+      setTimeout(()=> lockScreen.style.display = "none", 800);
+      setTimeout(()=> showConfession(), 2000);
+    }
+
+    /* CONFESSION POPUP */
+    const confessPopup = document.getElementById("confessPopup");
+    function showConfession(){
+      confessPopup.style.bottom = "40px";
+      setTimeout(()=>{
+        confessPopup.style.bottom = "-300px";
+      }, 5000);
+    }
+
+    /* TWINKLE ANIMATION */
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes twinkle {
+        0% { opacity: 0.2; }
+        50% { opacity: 1; }
+        100% { opacity: 0.2; }
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+  <!-- Floating I Like You Button -->
+  <div id="likeBtn" style="position:fixed; bottom:30px; right:30px; background:#ff4d6d; color:white; padding:18px 25px; border-radius:50px; font-size:1.2rem; cursor:pointer; box-shadow:0 10px 25px rgba(0,0,0,0.3); z-index:9999; animation:float 3s ease-in-out infinite;">
+    💘 I Love You
+  </div>
+
+  <script>
+    const likeBtn = document.getElementById("likeBtn");
+    likeBtn.onclick = () => {
+      likeBtn.innerHTML = "💖 You Mean A Lot to Me";
+      likeBtn.style.background = "#ff2e63";
+      setTimeout(()=>{
+        likeBtn.innerHTML = "💘 I Like You";
+      }, 4000);
+    }
+  </script>
+
+  <style>
+    /* RESPONSIVE DESIGN */
+    @media(max-width: 768px){
+      h1 { font-size: 2.5rem; }
+      p { font-size: 1.1rem; padding: 0 15px; }
+      .message-box { padding: 20px; }
+      #nightSky h2 { font-size: 1.6rem; }
+      #unlockHeart { font-size: 4rem; }
+      #confessPopup { font-size: 1.1rem; width: 90%; }
+      #likeBtn { font-size: 1rem; padding: 12px 18px; bottom:20px; right:20px; }
+    }
+
+    @media(max-width: 480px){
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+      .message-box h2 { font-size: 1.4rem; }
+      #unlockHeart { font-size: 3.2rem; }
+      #likeBtn { font-size: 0.9rem; padding: 10px 15px; }
+    }
+  </style>
+</body>
+</html>
